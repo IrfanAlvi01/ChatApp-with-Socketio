@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ScrollToBotoom from "react-scroll-to-bottom";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -33,6 +34,7 @@ function Chat({ socket, username, room }) {
         <p>Live Chat</p>
       </div>
       <div className="chat-body">
+      <ScrollToBotoom className="message-container" >
         {messageList.map((messageContent) => {
           return (
             <div className="message" id={username === messageContent.author ? "you" : "other"}>
@@ -48,6 +50,7 @@ function Chat({ socket, username, room }) {
             </div>
           );
         })}
+        </ScrollToBotoom>
       </div>
       <div className="chat-footer">
         <input
